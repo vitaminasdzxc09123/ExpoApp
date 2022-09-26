@@ -44,7 +44,7 @@ function HomeScreen({navigation}) {
 
     return filterData
 
-    }, [movieList]);
+    }, [movieList,search]);
 
   const removeMovie = async (id) => {
       await dispatch(deleteMovie(id));
