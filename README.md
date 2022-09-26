@@ -6,8 +6,8 @@ npm install
 
 expo start
 
-/ios
+ios =>
  click i
  
-/android
+android =>
  click a
