@@ -28,6 +28,7 @@ import {
 }                                from '../../store/actions/Movies';
 import FilmDetails               from '../../components/modal/FilmDetails';
 import { homeMovieListSelector } from '../../store/selectors/Movie';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function HomeScreen({navigation}) {
   const dispatch = useDispatch();
@@ -39,10 +40,10 @@ function HomeScreen({navigation}) {
   const movieList = useSelector(homeMovieListSelector)
 
   const inputDataSearch = useMemo(() => {
-    const sortData = movieList?.data.sort((a, b) => a.title.localeCompare(b.title))
+    const sortData = movieList.data?.sort((a, b) => a.title.localeCompare(b.title)) 
     const filterData = sortData?.filter(el => el.title.includes(search))
 
-    return filterData
+    return filterData || []
 
     }, [movieList,search]);
 
@@ -56,7 +57,8 @@ function HomeScreen({navigation}) {
         setIsVisibleDetailedFilmModal(true);
   };
 
-  const handleResetAccount = () => {
+  const handleResetAccount = async () => {
+     await AsyncStorage.removeItem('token')
      navigation.replace(ROUTES.AUTH_STACK)
   }
 

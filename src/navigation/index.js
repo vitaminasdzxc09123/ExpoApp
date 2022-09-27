@@ -25,7 +25,6 @@ const StackNavigation = createNativeStackNavigator();
         updateToken()
         
      },[token])
-
   const stack = useMemo(() => {
         if (token) {
     return (
