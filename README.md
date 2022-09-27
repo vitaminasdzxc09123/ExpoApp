@@ -1,13 +1,14 @@
 # ExpoApp
-$ docker run --name movies -p 8000:8000 webbylabhub/movies
-git clone project 
-cd TestAppExpo
-npm install
+1.  $ docker run --name movies -p 8000:8000 webbylabhub/movies
+2.  git clone https://github.com/vitaminasdzxc09123/ExpoApp.git
+3. cd ExpoApp
+4. npm install
+5. npm ci
 
-expo start
+6. expo start
 
-ios =>
+for ios =>
  click i
  
-android =>
+for android =>
  click a
