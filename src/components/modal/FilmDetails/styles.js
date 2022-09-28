@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   containerInfo: {
     marginTop       : 100,
     width           : '90%',
-    height          : 100,
+    padding         : 16,
     backgroundColor : theme.LIGHT_MAIN,
     borderRadius    : 16,
     alignItems      : 'center',

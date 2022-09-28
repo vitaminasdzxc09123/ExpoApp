@@ -56,25 +56,27 @@ function RegistryScreen({navigation}) {
         style        = {styles.inputContainer}
         onChangeText = {setEmail}
         value        = {email}
-        placeholder  = "email"
+        placeholder  = "Email"
         keyboardType = "default"
       />
       <TextInput
         style        = {styles.inputContainer}
         value        = {name}
-        placeholder  = "name"
+        placeholder  = "Name"
         onChangeText = {setName}
       />
       <TextInput
         style         = {styles.inputContainer}
         value         = {password}
         placeholder   = "Password"
+        secureTextEntry
         onChangeText  = {setPassword}
       />
       <TextInput
         style         = {styles.inputContainer}
         value         = {confirmPassword}
-        placeholder   = "confirmPassword"
+        placeholder   = "Confirm Password"
+        secureTextEntry
         onChangeText  = {setConfirmPassword}
       />
       <TouchableOpacity

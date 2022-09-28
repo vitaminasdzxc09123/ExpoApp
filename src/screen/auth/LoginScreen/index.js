@@ -51,12 +51,13 @@ function LoginScreen({navigation}) {
         style        = {styles.inputContainer}
         onChangeText = {setEmail}
         value        = {email}
-        placeholder  = "email"
+        placeholder  = "Email"
       />
       <TextInput
         style        = {styles.inputContainer}
         value        = {password}
         placeholder  = "Password"
+        secureTextEntry
         onChangeText = {setPassword}
       />
       <TouchableOpacity 

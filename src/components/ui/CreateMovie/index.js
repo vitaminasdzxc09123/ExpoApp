@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {
+  Alert,
   KeyboardAvoidingView,
   Text,
   TextInput,
@@ -7,12 +8,13 @@ import {
   View,
 }                                     from 'react-native';
 import { Picker }                     from '@react-native-picker/picker';
-import { useDispatch, useSelector}    from 'react-redux';
+import { useDispatch}                 from 'react-redux';
 
 import { addMovie, getMovies }        from '../../../store/actions/Movies';
 
 import styles                         from './styles';
 import theme                          from '../../../theme';
+import { useAppState }                from '../../../context/AppState';
 
 const FORMAT_MOVIE = {
   VHS : 'VHS',
@@ -25,6 +27,8 @@ const MOCKED_TEXT = {
 
 function CreateNewFilm() {
   const dispatch = useDispatch();
+
+  const { setIsVisibleCreateFilmModal} = useAppState();
 
   const [name, setName] = useState();
   const [year, setYear] = useState();
@@ -45,7 +49,16 @@ function CreateNewFilm() {
     if(createNewMovie.error) {
       alert(createNewMovie.error.code)
     } else {
-      alert('Movie add')
+      Alert.alert(
+      "Success",
+      "Movie add",
+      [
+        {
+          text: "ok",
+          onPress: () => setIsVisibleCreateFilmModal(false),
+        }
+      ]
+    );
       fetchData()
     }
   },[name,year,format,actors])
@@ -70,14 +83,14 @@ function CreateNewFilm() {
           keyboardType         = "default"
           style                = {styles.input}
           value                = {year}
-          placeholder          = "year"
+          placeholder          = "Year"
           placeholderTextColor = {theme.MAIN}
           onChangeText         = {setYear}
         />
         <TextInput
           style                = {styles.input}
           value                = {actors}
-          placeholder          = "actors"
+          placeholder          = "Actors"
           placeholderTextColor = {theme.MAIN}
           onChangeText         = {setActors}
         />
