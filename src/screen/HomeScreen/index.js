@@ -2,9 +2,9 @@ import React, {
   useCallback, 
   useEffect, 
   useMemo, 
-  useState
-}                            from 'react';
-import {
+  useState 
+}                                from 'react';
+import { 
   FlatList,
   Text,
   TextInput,
@@ -37,10 +37,15 @@ function HomeScreen({navigation}) {
   const [search, setSearch] = useState('');
 
   const { setIsVisibleDetailedFilmModal, setIsVisibleCreateFilmModal} = useAppState();
+
   const movieList = useSelector(homeMovieListSelector)
 
+  useEffect(()=> {
+       dispatch(getMovies())
+  },[])
+
   const inputDataSearch = useMemo(() => {
-    const sortData = movieList.data?.sort((a, b) => a.title.localeCompare(b.title)) 
+    const sortData = movieList.data?.sort((a, b) => b.updatedAt.slice(11,16).localeCompare(a.updatedAt.slice(11,16))) 
     const filterData = sortData?.filter(el => el.title.includes(search))
 
     return filterData || []

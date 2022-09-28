@@ -11,12 +11,20 @@ import ROUTES                         from '../constants/Routs';
 import MainStack                      from './Main'
 import AuthStack                      from './Auth'
 import AsyncStorage                   from '@react-native-async-storage/async-storage';
+import { useDispatch }                from 'react-redux';
+import { getMovies }                  from '../store/actions/Movies';
 
 const StackNavigation = createNativeStackNavigator();
 
  function Navigation() {
+      const dispatch = useDispatch();
+
     const [token, setToken] = useState('')
         
+ useEffect(()=> {
+       dispatch(getMovies())
+  },[])
+
     useEffect(() => {
            async function updateToken () {
            const userToken = await AsyncStorage.getItem('token')
