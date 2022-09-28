@@ -2,7 +2,7 @@
 
 ## backend
 
-### dependencies
+### Dependencies
 
 * git 
 * docker
