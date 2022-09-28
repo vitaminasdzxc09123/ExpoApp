@@ -1,13 +1,13 @@
 # ExpoApp
 
-#### backend
+### backend
 
 # dependencies
 
 * git 
 * docker
 
-## Development
+### Development
 
 1.  $ docker run --name movies -p 8000:8000 webbylabhub/movies
 2.  git clone https://github.com/vitaminasdzxc09123/ExpoApp.git
