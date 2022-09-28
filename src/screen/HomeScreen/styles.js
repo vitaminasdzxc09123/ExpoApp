@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     borderWidth       : 1,
     borderColor       : '#8C324C',
   },
+  titleContainer: {
+    flexDirection     : 'row'
+  }, 
   titleDeleteMovie: {
       margin          : 10
   },
@@ -29,10 +32,10 @@ const styles = StyleSheet.create({
   },
   containerBlock: {
     marginVertical    : 8,
-    paddingHorizontal : 16,
+    padding           : 16,
     flexDirection     : 'row',
-    alignItems        : 'center',
     justifyContent    : 'space-between',
+    alignItems        : 'center',
     borderRadius      : 16,
     backgroundColor   : theme.LIGHT_MAIN,
   },

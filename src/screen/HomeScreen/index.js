@@ -28,7 +28,7 @@ import {
 }                                from '../../store/actions/Movies';
 import FilmDetails               from '../../components/modal/FilmDetails';
 import { homeMovieListSelector } from '../../store/selectors/Movie';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage              from '@react-native-async-storage/async-storage';
 
 function HomeScreen({navigation}) {
   const dispatch = useDispatch();
@@ -64,19 +64,20 @@ function HomeScreen({navigation}) {
 
    const renderItem = useCallback((item) => {
         return (
-           <View style = {styles.containerBlock}>
+           <TouchableOpacity 
+              onPress = {() => getInfo(item.id)}
+              style   = {styles.containerBlock}>
+           <View style = {styles.titleContainer}>
+              <Text style = {styles.title}>{item.title}</Text>
+              <Text style = {styles.title}>{item.year}</Text>
+              <Text style = {styles.title}>{item.format}</Text>
+            </View>
               <TouchableOpacity
                 onPress = {() => removeMovie(item.id)}
                 style   = {styles.deleteButton}>
                 <Text style = {styles.titleDeleteMovie}>Delate</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress = {() => getInfo(item.id)}>
-              <Text style = {styles.title}>{item.title}</Text>
-              <Text style = {styles.title}>{item.year}</Text>
-              <Text style = {styles.title}>{item.format}</Text>
-            </TouchableOpacity>
-
-          </View>
+          </TouchableOpacity>
         );
     }, []);
 
@@ -87,7 +88,7 @@ function HomeScreen({navigation}) {
      <TextInput
         style        = {styles.searchBar}
         value        = {search}
-        placeholder  = {'search'}
+        placeholder  = {'Search'}
         onChangeText = {setSearch}
       />
       <TouchableOpacity
@@ -107,7 +108,7 @@ function HomeScreen({navigation}) {
       <TouchableOpacity
         onPress = {handleResetAccount}
         style   = {styles.resetButton}>
-        <Text style = {styles.titleReset}>exit</Text>
+        <Text style = {styles.titleReset}>Exit</Text>
       </TouchableOpacity>
     </View>
   );
